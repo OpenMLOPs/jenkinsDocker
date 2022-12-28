@@ -1,15 +1,27 @@
 version: '3.7'
+name: jenkins-app-service
 services:
   jenkins:
     build:
       context: .
+    environment:
+      JAVA_OPTS: -Djenkins.install.runSetupWizard=false
+      JENKINS_OPTS: --argumentsRealm.roles.user=admin --argumentsRealm.passwd.admin=pass --argumentsRealm.roles.admin=admin
     restart: on-failure
     privileged: true
+    tty: true
     ports:
       - 8080:8080
-      - 50000:50000
     container_name: jenkins
     volumes:
       - /jenkins_home:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
       - /usr/bin/docker:/usr/local/bin/docker
+      - artifactStore:/var/jenkins_home/workspace/files
+volumes:
+  artifactStore:
+    external: true
+networks:
+  default:
+    name: mflowtrackingserver_default
+    external: true

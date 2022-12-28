@@ -1,0 +1,16 @@
+numpy==1.19.5
+pandas==1.1.5
+scikit-learn==0.23.2
+mlxtend==0.19.0
+statsmodels==0.12.2
+imbalanced-learn==0.7.0
+scipy==1.5.4
+mlflow==1.26.1
+fastparquet==0.8.1
+pyarrow==8.0.0
+python-dotenv==0.20.0
+optuna==2.10.0
+mysql-connector-python==8.0.30
+cryptography==38.0.3
+psycopg2-binary
+PyMySQL==1.0.2
